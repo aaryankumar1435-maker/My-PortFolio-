@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Aryan Kumar: backend engineering and applied ML. Projects, experience, skills and resume.">
+<title>Aryan Kumar Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0A0A0A;
+    --card: #141414;
+    --ink: #FAFAFA;
+    --muted: #8A8A8A;
+    --border: #262626;
+    --accent: #4ADE80;
+    --sans: "Inter", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    padding-inline: 24px;
+    padding-block: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-bottom: 80px; }
+
+  /* Type utilities */
+  .eyebrow { color: var(--accent); font-family: var(--mono); font-size: 10px; letter-spacing: 0.17em; line-height: 1.4; text-transform: uppercase; }
+  .eyebrow.dim { color: var(--muted); }
+  .mono-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--accent); background: none; border: 0; cursor: pointer;
+  }
+  .mono-link svg { width: 12px; height: 12px; }
+  .mono-link.lg svg { width: 14px; height: 14px; }
+  .mono-link.muted { color: var(--muted); }
+  .mono-link.muted:hover { color: var(--ink); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .tags span { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.13em; color: var(--muted); }
+
+  /* Header */
+  .site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--border); padding-block: 28px; }
+  .logo { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.24em; }
+  .logo:hover { color: var(--accent); }
+  .site-nav { display: flex; gap: 28px; }
+  .site-nav a { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted); }
+  .site-nav a:hover { color: var(--accent); }
+
+  /* Intro */
+  .intro { padding-top: 144px; }
+  .intro-body { margin-top: 28px; max-width: 760px; }
+  h1 { font-size: 96px; font-weight: 500; letter-spacing: -0.065em; line-height: 1; }
+  .intro-sub { margin-top: 16px; font-size: 24px; letter-spacing: -0.03em; }
+  .intro-desc { margin-top: 32px; max-width: 560px; color: var(--muted); line-height: 1.75; }
+  .contact-links { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 16px 24px; }
+
+  /* Sections */
+  .section { margin-top: 120px; scroll-margin-top: 24px; }
+  .section-heading { display: flex; align-items: center; gap: 24px; }
+  .section-rule { height: 1px; flex: 1; background: var(--border); }
+  .list { margin-top: 32px; }
+  .list > * { border-bottom: 1px solid var(--border); }
+  .list > *:first-child { border-top: 1px solid var(--border); }
+
+  .exp { padding-block: 32px; }
+  .exp-top { display: flex; justify-content: space-between; gap: 32px; }
+  .exp h2 { font-size: 18px; font-weight: 500; letter-spacing: -0.025em; }
+  .exp .org { margin-top: 4px; font-size: 14px; color: var(--muted); }
+  .exp .org a:hover { color: var(--accent); }
+  .exp .date { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); padding-top: 4px; white-space: nowrap; }
+  .exp .desc { margin-top: 24px; max-width: 680px; font-size: 14px; line-height: 1.7; color: var(--muted); }
+  .exp .tags { margin-top: 20px; }
+
+  .grid { margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .card {
+    display: flex; flex-direction: column; min-height: 285px;
+    background: var(--card); border: 1px solid var(--border); padding: 24px;
+  }
+  .card.featured { border-left: 2px solid var(--accent); }
+  .card h2 { margin-top: 20px; font-size: 20px; font-weight: 500; letter-spacing: -0.035em; }
+  .card h2 a:hover { color: var(--accent); }
+  .card .desc { margin-top: 16px; max-width: 430px; font-size: 14px; line-height: 1.7; color: var(--muted); }
+  .card .tags { margin-top: 20px; }
+  .card-links { margin-top: auto; padding-top: 32px; display: flex; align-items: center; gap: 20px; }
+  .card-links .push { margin-left: auto; }
+
+  .row { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 32px; padding-block: 20px; }
+  .row .k { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted); padding-top: 4px; }
+  .row .v { font-size: 14px; line-height: 1.7; }
+  .row .v small { display: block; color: var(--muted); font-size: 14px; }
+
+  footer { margin-top: 128px; border-top: 1px solid var(--border); padding-top: 28px; }
+  .foot-top { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  .foot-social { display: flex; gap: 20px; }
+  .foot-social a { color: var(--muted); }
+  .foot-social a:hover { color: var(--accent); }
+  .foot-social svg { width: 16px; height: 16px; display: block; }
+  .copy-status { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); min-height: 14px; margin-top: 12px; }
+  .copyright { margin-top: 48px; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+
+  /* Case study */
+  .cs-header { border-bottom: 1px solid var(--border); padding-block: 28px; }
+  .cs-intro { padding-top: 144px; }
+  .cs-intro h1 { margin-top: 28px; max-width: 800px; font-size: 72px; letter-spacing: -0.06em; }
+  .cs-summary { margin-top: 24px; max-width: 700px; font-size: 18px; line-height: 1.75; color: var(--muted); }
+  .cs-meta { margin-top: 48px; max-width: 820px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; border-block: 1px solid var(--border); padding-block: 28px; }
+  .cs-meta p:last-child { margin-top: 12px; font-size: 14px; line-height: 1.7; }
+  .cs-links { margin-top: 28px; display: flex; gap: 24px; }
+  .cs-content { margin-top: 128px; }
+  .cs-section { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; border-top: 1px solid var(--border); padding-block: 40px; }
+  .cs-section .copy { max-width: 670px; line-height: 2; color: var(--muted); display: grid; gap: 16px; }
+  .cs-section .copy b { color: var(--ink); font-weight: 500; }
+  .cs-figure { margin-top: 16px; }
+  .cs-panel { border: 1px solid var(--border); background: var(--card); padding: 32px; }
+  .cs-caption { margin-top: 16px; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
+
+  .bars { display: grid; gap: 14px; }
+  .bar { display: grid; grid-template-columns: 170px minmax(0, 1fr) 56px; gap: 16px; align-items: center; }
+  .bar .n { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .bar.key .n { color: var(--ink); }
+  .bar .t { height: 6px; background: var(--border); }
+  .bar .f { height: 100%; background: var(--muted); }
+  .bar.key .f { background: var(--accent); }
+  .bar .val { font-family: var(--mono); font-size: 12px; text-align: right; font-variant-numeric: tabular-nums; }
+  .bar.key .val { color: var(--accent); }
+
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: 32px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .stats b { display: block; font-size: 32px; font-weight: 500; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+  .stats span { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+
+  .steps { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .steps span { border: 1px solid var(--border); padding: 10px 12px; }
+  .steps span.key { border-color: var(--accent); color: var(--accent); }
+  .steps i { color: var(--muted); font-style: normal; }
+
+  /* Motion */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in { animation: reveal-in 650ms cubic-bezier(.2,.7,.2,1) both; }
+    .delay-1 { animation-delay: 80ms; } .delay-2 { animation-delay: 150ms; }
+    .delay-3 { animation-delay: 220ms; } .delay-4 { animation-delay: 290ms; }
+    .card { transition: transform .3s; }
+    .card:hover { transform: translateY(-4px); }
+    .mono-link { transition: transform .2s, color .2s; }
+    .mono-link:hover { transform: translateY(-2px); }
+    .site-nav a, .logo, .foot-social a, .card h2 a { transition: color .2s; }
+  }
+  @keyframes reveal-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 760px) {
+    .site-nav { display: none; }
+    .intro, .cs-intro { padding-top: 96px; }
+    h1 { font-size: 60px; }
+    .cs-intro h1 { font-size: 46px; }
+    .intro-sub { font-size: 20px; }
+    .grid { grid-template-columns: minmax(0, 1fr); }
+    .exp-top, .foot-top { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .row { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .cs-meta { grid-template-columns: minmax(0, 1fr); }
+    .cs-section { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bar { grid-template-columns: 110px minmax(0, 1fr) 44px; gap: 10px; }
+    .cs-panel { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+    <symbol id="i-branch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M6 8.5v7M18 8.5c0 5-6 4-11 7.5"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h8"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <!-- ============ HOME ============ -->
+  <div id="home-view">
+    <header class="site-header">
+      <a class="logo" href="#top">Aryan / Portfolio</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+      </nav>
+    </header>
+
+    <section class="intro" id="top">
+      <p class="eyebrow reveal-in">01 / Intro</p>
+      <div class="intro-body">
+        <h1 class="reveal-in delay-1">Aryan Kumar</h1>
+        <p class="intro-sub reveal-in delay-2">Backend engineering and applied ML.</p>
+        <p class="intro-desc reveal-in delay-3">B.Tech CSE at IIIT Pune. On the founding team at Veridion, building the backend and API security layer. I build REST APIs, role-based platforms and retrieval systems.</p>
+        <div class="contact-links reveal-in delay-4">
+          <a class="mono-link lg" href="https://github.com/aaryankumar1435-maker" target="_blank" rel="noopener"><svg><use href="#i-branch"/></svg>GitHub<svg><use href="#i-arrow"/></svg></a>
+          <a class="mono-link lg" href="https://linkedin.com/in/aaryankumar1435" target="_blank" rel="noopener"><svg><use href="#i-brief"/></svg>LinkedIn<svg><use href="#i-arrow"/></svg></a>
+          <a class="mono-link lg" href="https://www.codechef.com/users/smack_eagle_39" target="_blank" rel="noopener"><svg><use href="#i-code"/></svg>CodeChef<svg><use href="#i-arrow"/></svg></a>
+          <a class="mono-link lg" href="aryan-kumar-resume.pdf" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>Resume<svg><use href="#i-arrow"/></svg></a>
+          <a class="mono-link lg" href="#contact"><svg><use href="#i-mail"/></svg>Email</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-heading"><p class="eyebrow">02 / Experience</p><span class="section-rule"></span></div>
+      <div class="list">
+        <article class="exp">
+          <div class="exp-top">
+            <div><h2>Founding Team, Backend &amp; API Security</h2><p class="org"><a href="https://www.veridion.co.in/" target="_blank" rel="noopener">Veridion</a> · Early-stage fintech</p></div>
+            <p class="date">Current</p>
+          </div>
+          <p class="desc">Contributing to the backend architecture of a fintech product in active development. Working on the API security layer: authentication flows, OAuth integration and endpoint-level access control across the service.</p>
+          <div class="tags"><span>TypeScript</span><span>Express</span><span>Prisma</span><span>PostgreSQL</span><span>OAuth</span></div>
+        </article>
+        <article class="exp">
+          <div class="exp-top">
+            <div><h2>Open Source Contributor</h2><p class="org">GirlScript Summer of Code 2026</p></div>
+            <p class="date">2026</p>
+          </div>
+          <p class="desc">Raised 5+ pull requests fixing bugs and shipping feature enhancements across production repositories under GSSoC and NSoC 2026. Worked with maintainers through structured code reviews, following each project's contribution guidelines.</p>
+          <div class="tags"><span>Bug fixes</span><span>Features</span><span>Code review</span></div>
+        </article>
+        <article class="exp">
+          <div class="exp-top">
+            <div><h2>Open Source Contributor</h2><p class="org">Nexus Spring of Code 2026</p></div>
+            <p class="date">2026</p>
+          </div>
+          <p class="desc">Delivered end-to-end feature implementations and resolved critical issues in large codebases under mentorship.</p>
+          <div class="tags"><span>Features</span><span>Issue fixing</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading"><p class="eyebrow">03 / Projects</p><span class="section-rule"></span></div>
+      <div class="grid">
+        <article class="card featured">
+          <p class="eyebrow dim">Generative AI</p>
+          <h2><a href="#multimodal-rag">Multimodal RAG System</a></h2>
+          <p class="desc">Cited question answering over PDFs, web pages, code, GitHub issues, images and video. Hybrid search, RRF fusion and cross-encoder reranking; 92.5% hit-rate@5 on a 40-question eval set.</p>
+          <div class="tags"><span>Python</span><span>LangChain</span><span>pgvector</span><span>PostgreSQL</span></div>
+          <div class="card-links">
+            <a class="mono-link" href="https://github.com/aaryankumar1435-maker/MultiModel-RAG" target="_blank" rel="noopener">Source<svg><use href="#i-arrow"/></svg></a>
+            <a class="mono-link muted push" href="#multimodal-rag">Case study</a>
+          </div>
+        </article>
+        <article class="card featured">
+          <p class="eyebrow dim">Full-stack Web</p>
+          <h2><a href="#shopease">ShopEase</a></h2>
+          <p class="desc">Full-stack e-commerce app with product browsing, category filters, cart and checkout, on Spring Boot REST APIs with JWT auth and role-based access.</p>
+          <div class="tags"><span>React</span><span>Redux</span><span>Spring Boot</span><span>PostgreSQL</span></div>
+          <div class="card-links">
+            <a class="mono-link" href="https://github.com/aaryankumar1435-maker/ShopEase" target="_blank" rel="noopener">Source<svg><use href="#i-arrow"/></svg></a>
+            <a class="mono-link muted push" href="#shopease">Case study</a>
+          </div>
+        </article>
+        <article class="card">
+          <p class="eyebrow dim">Full-stack Web</p>
+          <h2><a href="#acadex">AcadeX</a></h2>
+          <p class="desc">College lecture video platform with student, faculty and admin portals, a subject → semester → topic → lecture hierarchy and threaded Q&amp;A.</p>
+          <div class="tags"><span>React</span><span>Node.js</span><span>MongoDB</span><span>Cloudinary</span></div>
+          <div class="card-links">
+            <a class="mono-link" href="https://github.com/aaryankumar1435-maker/Acadex" target="_blank" rel="noopener">Source<svg><use href="#i-arrow"/></svg></a>
+            <a class="mono-link muted push" href="#acadex">Case study</a>
+          </div>
+        </article>
+        <article class="card">
+          <p class="eyebrow dim">Resume</p>
+          <h2><a href="aryan-kumar-resume.pdf" target="_blank" rel="noopener">One-page resume</a></h2>
+          <p class="desc">Education, projects, experience, open source work and achievements in one PDF.</p>
+          <div class="tags"><span>PDF</span><span>1 page</span></div>
+          <div class="card-links">
+            <a class="mono-link" href="aryan-kumar-resume.pdf" target="_blank" rel="noopener">Open resume<svg><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-heading"><p class="eyebrow">04 / Skills</p><span class="section-rule"></span></div>
+      <div class="list">
+        <div class="row"><p class="k">Languages</p><p class="v">C++, JavaScript, TypeScript, Python, Java, SQL</p></div>
+        <div class="row"><p class="k">Frontend</p><p class="v">React, Redux, Material UI, Tailwind CSS, Vite</p></div>
+        <div class="row"><p class="k">Backend</p><p class="v">Node.js, Express.js, Spring Boot, Prisma, REST APIs, JWT, OAuth</p></div>
+        <div class="row"><p class="k">Databases</p><p class="v">PostgreSQL, pgvector, MongoDB, SQLite</p></div>
+        <div class="row"><p class="k">ML and AI</p><p class="v">RAG, LangChain, Hugging Face Transformers, Gemini API, Claude API, NLP, prompt engineering</p></div>
+        <div class="row"><p class="k">Tools</p><p class="v">Git, GitHub Actions, Postman, Docker, Cloudinary, VS Code</p></div>
+        <div class="row"><p class="k">Core CS</p><p class="v">OOP, DBMS, Operating Systems, Computer Networks, Compiler Design</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-heading"><p class="eyebrow">05 / Education</p><span class="section-rule"></span></div>
+      <div class="list">
+        <div class="row"><p class="k">2024 — 2028</p><p class="v">Indian Institute of Information Technology, Pune<small>B.Tech in Computer Science and Engineering · CGPA 7.56</small></p></div>
+        <div class="row"><p class="k">JEE</p><p class="v">JEE Main 98.89 percentile · JEE Advanced AIR 16085</p></div>
+        <div class="row"><p class="k">Hackathon</p><p class="v">Selected for the second round, Meta PyTorch OpenEnv Hackathon<small>Scaler School of Technology, Bangalore (2026)</small></p></div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="foot-top">
+        <button class="mono-link" type="button" id="copy-email" aria-describedby="copy-status">aaryankumar1435@gmail.com</button>
+        <div class="foot-social">
+          <a href="https://github.com/aaryankumar1435-maker" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-branch"/></svg></a>
+          <a href="https://linkedin.com/in/aaryankumar1435" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-brief"/></svg></a>
+          <a href="aryan-kumar-resume.pdf" target="_blank" rel="noopener" aria-label="Resume"><svg><use href="#i-file"/></svg></a>
+        </div>
+      </div>
+      <p class="copy-status" id="copy-status" aria-live="polite">Click the address to copy it</p>
+      <p class="copyright">© 2026 Aryan Kumar · Pune, India</p>
+    </footer>
+  </div>
+
+  <!-- ============ CASE STUDIES ============ -->
+  <div id="case-view" hidden>
+    <header class="cs-header">
+      <a class="mono-link lg back-link" href="#projects"><svg><use href="#i-back"/></svg>Back to projects</a>
+    </header>
+    <div id="case-body"></div>
+    <footer>
+      <a class="mono-link back-link" href="#projects">← Back to all projects</a>
+    </footer>
+  </div>
+</div>
+
+<template id="cs-multimodal-rag">
+  <section class="cs-intro">
+    <p class="eyebrow">Generative AI</p>
+    <h1>Multimodal RAG System</h1>
+    <p class="cs-summary">A question-answering system over mixed sources that cites the exact page, line, timestamp or issue behind every claim, with every retrieval change measured against an eval set.</p>
+    <div class="cs-meta">
+      <div><p class="eyebrow dim">Type</p><p>Retrieval pipeline and evaluation harness</p></div>
+      <div><p class="eyebrow dim">Sources</p><p>PDFs, web pages, code, GitHub issues, images, video</p></div>
+      <div><p class="eyebrow dim">Stack</p><p>Python, LangChain, PostgreSQL, pgvector, sentence-transformers, Docling, Groq, Whisper, ffmpeg</p></div>
+    </div>
+    <div class="cs-links">
+      <a class="mono-link" href="https://github.com/aaryankumar1435-maker/MultiModel-RAG" target="_blank" rel="noopener">View source<svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+  <div class="cs-content">
+    <section class="cs-section">
+      <p class="eyebrow dim">01 / The Problem</p>
+      <div class="copy"><p>Useful answers are spread across papers, web pages, codebases, issue trackers and recorded talks. Plain embedding search misses exact names and numbers, mangles tables, and can't search images at all. An answer without a source can't be checked.</p></div>
+    </section>
+    <section class="cs-section">
+      <p class="eyebrow dim">02 / Approach</p>
+      <div class="copy">
+        <p><b>Retrieve broadly, then narrow precisely.</b> Dense search and Postgres full-text search each pull 40 candidates. Reciprocal Rank Fusion merges them by rank, and a cross-encoder rescores the pool down to the best 5.</p>
+        <p><b>Search on descriptions, answer from originals.</b> Figures and video frames are described by a vision model, and the description is what gets indexed.</p>
+        <p><b>Measure one change at a time.</b> Each technique was added alone and re-scored on a labelled question set before the next one.</p>
+      </div>
+    </section>
+    <section class="cs-section">
+      <p class="eyebrow dim">03 / What I Built</p>
+      <div class="copy">
+        <p>Parsers for seven source types that produce chunks with a stable, hash-based ID and a precise locator. Python code is split by function with <code>ast</code>, PDF tables and figures come from Docling, and video audio is transcribed by Whisper into 30-second windows.</p>
+        <p>One Postgres + pgvector table holding text, embeddings and metadata, with a GIN full-text index. RRF and the lexical SQL search are written by hand.</p>
+        <p>A confidence gate that switches the LLM to a hedging prompt when the top match is weak or ambiguous, and a check for citations to sources that don't exist.</p>
+        <p>An evaluation harness reporting hit-rate@5 and MRR, overall and per source type, logged on every run.</p>
+      </div>
+    </section>
+    <section class="cs-section">
+      <p class="eyebrow dim">04 / Challenges</p>
+      <div class="copy">
+        <p>pypdf scrambled table rows and columns, so table questions failed until Docling extraction was added. Some PDFs contained NUL bytes that Postgres rejects.</p>
+        <p>Two tables with near-identical headers still get confused, and the confidence gate can't catch it, because the wrong table scores confidently high.</p>
+        <p>Ingesting the project's own repo let its README outrank the actual code on code questions. I kept this as a documented finding instead of tuning it away.</p>
+      </div>
+    </section>
+    <section class="cs-section">
+      <p class="eyebrow dim">05 / What I'd Do Differently</p>
+      <div class="copy"><p>Hand-review the eval set's answer labels before trusting the numbers, pass the original images to a vision model at answer time instead of only their descriptions, and parse citations more strictly.</p></div>
+    </section>
+    <figure class="cs-figure">
+      <div class="cs-panel">
+        <div class="stats">
+          <div><b>0.925</b><span>Hit-rate@5</span></div>
+          <div><b>0.775</b><span>MRR</span></div>
+          <div><b>40</b><span>Eval questions</span></div>
+          <div><b>7</b><span>Source types</span></div>
+        </div>
+        <div class="bars" role="img" aria-label="Hit-rate at 5 by step: dense 0.706, hybrid 0.706, reranker 0.941, contextual prefixes 0.941, Docling tables 1.000, query expansion 1.000">
+          <div class="bar"><span class="n">Dense only</span><div class="t"><div class="f" style="width:70.6%"></div></div><span class="val">0.706</span></div>
+          <div class="bar"><span class="n">+ Hybrid RRF</span><div class="t"><div class="f" style="width:70.6%"></div></div><span class="val">0.706</span></div>
+          <div class="bar key"><span class="n">+ Reranker</span><div class="t"><div class="f" style="width:94.1%"></div></div><span class="val">0.941</span></div>
+          <div class="bar"><span class="n">+ Context prefix</span><div class="t"><div class="f" style="width:94.1%"></div></div><span class="val">0.941</span></div>
+          <div class="bar"><span class="n">+ Docling tables</span><div class="t"><div class="f" style="width:100%"></div></div><span class="val">1.000</span></div>
+          <div class="bar"><span class="n">+ Query expansion</span><div class="t"><div class="f" style="width:100%"></div></div><span class="val">1.000</span></div>
+        </div>
+      </div>
+      <figcaption class="cs-caption">Hit-rate@5 as each change was added, first 17 questions. The reranker gave the biggest gain.</figcaption>
+    </figure>
+  </div>
+</template>
+
+<template id="cs-shopease">
+  <section class="cs-intro">
+    <p class="eyebrow">Full-stack Web</p>
+    <h1>ShopEase</h1>
+    <p class="cs-summary">A full-stack e-commerce application covering the whole shopper journey, from browsing to checkout, on a secured Spring Boot API.</p>
+    <div class="cs-meta">
+      <div><p class="eyebrow dim">Type</p><p>Full-stack web application</p></div>
+      <div><p class="eyebrow dim">API docs</p><p>Postman collection in the repository</p></div>
+      <div><p class="eyebrow dim">Stack</p><p>React, Redux, Tailwind CSS, Spring Boot, Spring Security, Spring Data JPA, PostgreSQL, JWT</p></div>
+    </div>
+    <div class="cs-links">
+      <a class="mono-link" href="https://github.com/aaryankumar1435-maker/ShopEase" target="_blank" rel="noopener">View source<svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+  <div class="cs-content">
+    <section class="cs-section">
+      <p class="eyebrow dim">01 / The Problem</p>
+      <div class="copy"><p>An online store needs a catalogue people can browse and filter, a cart that holds its state, and a checkout that only signed-in users can complete, all backed by an API that enforces who can do what.</p></div>
+    </section>
+    <section class="cs-section">
+      <p class="eyebrow dim">02 / Approach</p>
+      <div class="copy"><p>A React front end with Redux holding cart and session state, talking to a Spring Boot REST API. Spring Security with JWTs handles authentication, and roles decide which endpoints a user can reach.</p></div>
+    </section>
+    <section class="cs-section">
+      <p class="eyebrow dim">03 / What I Built</p>
+      <div class="copy">
+        <p>Product browsing, category filters, a product detail page, cart management and a checkout flow.</p>
+        <p>REST APIs with Spring Data JPA, and product, user and order relationships modelled in PostgreSQL.</p>
+        <p>JWT authentication and role-based authorization with Spring Security, and the API documented as a Postman collection.</p>
+      </div>
+    </section>
+    <figure class="cs-figure">
+      <div class="cs-panel">
+        <div class="steps">
+          <span>Browse</span><i>→</i><span>Filter</span><i>→</i><span>Product</span><i>→</i><span>Cart</span><i>→</i><span class="key">Sign in (JWT)</span><i>→</i><span>Checkout</span>
+        </div>
+      </div>
+      <figcaption class="cs-caption">Shopper flow. Checkout sits behind JWT authentication.</figcaption>
+    </figure>
+  </div>
+</template>
+
+<template id="cs-acadex">
+  <section class="cs-intro">
+    <p class="eyebrow">Full-stack Web</p>
+    <h1>AcadeX</h1>
+    <p class="cs-summary">A college lecture video platform where admins set up the academic year, faculty publish lectures, and students watch and ask questions.</p>
+    <div class="cs-meta">
+      <div><p class="eyebrow dim">Type</p><p>Role-based web platform</p></div>
+      <div><p class="eyebrow dim">Portals</p><p>Admin, faculty, student</p></div>
+      <div><p class="eyebrow dim">Stack</p><p>React, Material UI, Vite, Node.js, Express, MongoDB, Mongoose, JWT, Cloudinary</p></div>
+    </div>
+    <div class="cs-links">
+      <a class="mono-link" href="https://github.com/aaryankumar1435-maker/Acadex" target="_blank" rel="noopener">View source<svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+  <div class="cs-content">
+    <section class="cs-section">
+      <p class="eyebrow dim">01 / The Problem</p>
+      <div class="copy"><p>Recorded lectures end up scattered across drives and chat groups. Students can't find the lecture for a topic, and there's no place to ask the faculty member who taught it.</p></div>
+    </section>
+    <section class="cs-section">
+      <p class="eyebrow dim">02 / Approach</p>
+      <div class="copy"><p>Three role-based portals over one REST API. Content is organised as subject → semester → topic → lecture, and access is scoped to the student's year. A teaching-assignment model maps faculty to subjects for each academic session.</p></div>
+    </section>
+    <section class="cs-section">
+      <p class="eyebrow dim">03 / What I Built</p>
+      <div class="copy">
+        <p>REST APIs in Node.js and Express with a MongoDB data model, including academic sessions, subjects, topics, lectures, comments and teaching assignments.</p>
+        <p>Cloudinary-backed video delivery with multi-resolution playback.</p>
+        <p>Threaded Q&amp;A between students and faculty on each lecture, and an admin portal for sessions, faculty accounts and teaching assignments.</p>
+      </div>
+    </section>
+    <figure class="cs-figure">
+      <div class="cs-panel">
+        <div class="steps">
+          <span>Subject</span><i>→</i><span>Semester</span><i>→</i><span>Topic</span><i>→</i><span class="key">Lecture</span>
+        </div>
+      </div>
+      <figcaption class="cs-caption">Content hierarchy. Students see the subjects for their year.</figcaption>
+    </figure>
+  </div>
+</template>
+
+<script>
+  (function () {
+    var home = document.getElementById('home-view');
+    var caseView = document.getElementById('case-view');
+    var caseBody = document.getElementById('case-body');
+    var slugs = ['multimodal-rag', 'shopease', 'acadex'];
+
+    function route() {
+      var hash = (location.hash || '').slice(1);
+      if (slugs.indexOf(hash) !== -1) {
+        var tpl = document.getElementById('cs-' + hash);
+        caseBody.innerHTML = '';
+        caseBody.appendChild(tpl.content.cloneNode(true));
+        home.hidden = true;
+        caseView.hidden = false;
+        window.scrollTo(0, 0);
+      } else {
+        var wasCase = !caseView.hidden;
+        caseView.hidden = true;
+        home.hidden = false;
+        if (wasCase && hash) {
+          var target = document.getElementById(hash);
+          if (target) target.scrollIntoView();
+        }
+      }
+    }
+    window.addEventListener('hashchange', route);
+    route();
+
+    var btn = document.getElementById('copy-email');
+    var status = document.getElementById('copy-status');
+    btn.addEventListener('click', function () {
+      var text = 'aaryankumar1435@gmail.com';
+      function fallback() { status.textContent = 'Copy failed. The address is ' + text; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { status.textContent = 'Email copied'; }, fallback);
+      } else { fallback(); }
+    });
+  })();
+</script>
+
+</body>
+</html>
